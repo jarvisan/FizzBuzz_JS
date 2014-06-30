@@ -20,6 +20,9 @@ exports.fizzbuzz = function(max, format) {
   if (format === "json")
     return JSON.stringify(result);
 
-  if (format === "html")
-   return result.join("<li>i\n</li>") 
+  if (format === "html"){
+    result[0] = "<li>"+result[0]
+    result[result.length-1] = result[result.length-1] + "</li>"
+    return result.join("</li>\n<li>")
+  }
 }
