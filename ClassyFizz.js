@@ -1,21 +1,24 @@
 function Fizz(max, format){
   this.max = max;
   this.format = format;
-  this.result = [];
+  this.result = this.calc();
+  
 }
 Fizz.prototype.calc= function () {
+  result = [];
   for(var i =1; i <= this.max; i++){
     if(i % 15 === 0)
-      this.result.push( "FizzBuzz");
+      result.push( "FizzBuzz");
     else if(i % 3 === 0)
-      this.result.push( "Fizz" );
+      result.push( "Fizz" );
     else if(i % 5 === 0)
-      this.result.push( "Buzz" );
-    else this.result.push( i );
+      result.push( "Buzz" );
+    else result.push( i );
   }
+  return result;
 }
 
-Fizz.prototype.formats= function () {
+Fizz.prototype.out= function () {
   if (this.format === "plain")
     return this.result.join(",");
   
@@ -31,6 +34,5 @@ Fizz.prototype.formats= function () {
 
 var max = process.argv[2];
 var format = process.argv[3];
-var holds = new Fizz(max, format);
-holds.calc();
-console.log(holds.formats());
+var fizzbuzz = new Fizz(max, format);
+console.log(fizzbuzz.out());
