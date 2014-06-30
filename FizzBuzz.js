@@ -1,28 +1,19 @@
-exports.fizzbuzz = function(max, format) {
+exports.fizzbuzz = function(max) {
 
   var result = []
 
   for(var i = 1; i <= max; i++){
     
     if( i% 15 === 0 )
-      result[i-1] = "FizzBuzz" 
+      result.push( "FizzBuzz" );
     else if( i% 3 === 0 )
-      result[i-1] = "Fizz"
+      result.push( "Fizz" );
     else if( i% 5 === 0 )
-      result[i-1] = "Buzz"
-    else result[i-1] = i;
+      result.push( "Buzz" );
+    else result.push( i );
 
   }
-  
-  if (format === "plain")
-    return result.join(",");
-  
-  if (format === "json")
-    return JSON.stringify(result);
 
-  if (format === "html"){
-    result[0] = "<li>"+result[0]
-    result[result.length-1] = result[result.length-1] + "</li>"
-    return result.join("</li>\n<li>")
-  }
+  return result;
+  
 }
