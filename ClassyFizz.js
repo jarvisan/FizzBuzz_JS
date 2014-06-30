@@ -2,8 +2,8 @@ function Fizz(max, format){
   this.max = max;
   this.format = format;
   this.result = this.calc();
-  
 }
+
 Fizz.prototype.calc= function () {
   result = [];
   for(var i =1; i <= this.max; i++){
@@ -22,14 +22,16 @@ Fizz.prototype.out= function () {
   if (this.format === "plain")
     return this.result.join(",");
   
-  if (this.format === "json")
+  else if (this.format === "json")
     return JSON.stringify(this.result);
 
-  if (this.format === "html"){
+  else if (this.format === "html"){
     this.result[0] = "<li>"+this.result[0]
     this.result[this.result.length-1] = this.result[this.result.length-1] + "</li>"
     return this.result.join("</li>\n<li>")
   }
+
+  else return "Valid formats are: plain, json, html"
 }
 
 var max = process.argv[2];
